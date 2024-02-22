@@ -1,27 +1,32 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = (env) => {
-  const isDev = env.mode === 'development';
-  return {
-    mode: env.mode ?? "development",
-    entry: path.resolve(__dirname, "src", "index.js"),
-    output: {
-      path: path.resolve(__dirname, "build"),
-      filename: "[name].[contenthash].js",
-      clean: true,
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "src", "index.html"),
-      }),
-      new webpack.ProgressPlugin(),
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+  devtool: 'inline-source-map',
+  devServer: {
+    static: './dist',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+  ],
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
-    devtool: isDev ? 'inline-source-map' : false,
-    devServer: isDev ? {
-      port: env.port ?? 3000,
-      open: true,
-    } : undefined,
-  };
+  },
+  optimization: {
+    runtimeChunk: 'single',
+  },
 };

@@ -2,26 +2,30 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/aelnko/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/aelnko/frontend-project-11/actions)",
-  "main": "./src/index.js",
+  "private": true,
   "scripts": {
-    "start": "webpack serve",
-    "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env mode=production"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^6.10.0",
     "eslint": "^8.52.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.0",
-    "html-webpack-plugin": "^5.5.3",
-    "webpack": "^5.89.0",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "bootstrap": "^5.3.2",
+    "bootstrap": "^5.3.3",
     "clean-webpack-plugin": "^4.0.0",
+    "lodash": "^4.17.21",
     "path": "^0.12.7"
   }
 }
