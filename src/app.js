@@ -1,6 +1,6 @@
-import validate from "./scripts/validator";
-import onChange from "on-change";
-import render from "./view/view";
+import onChange from 'on-change';
+import validate from './scripts/validator';
+import render from './view/view';
 
 export default () => {
   const state = {
@@ -11,7 +11,7 @@ export default () => {
     errors: [],
   };
 
-  const watchedState = onChange(state, render); 
+  const watchedState = onChange(state, render);
 
   const form = document.querySelector('form');
 
@@ -22,11 +22,11 @@ export default () => {
     validate(url).then((link) => {
       watchedState.form.status = 'valid';
       watchedState.data = link;
-    }).catch((e) => {
+    }).catch((error) => {
       watchedState.form.status = 'invalid';
-      watchedState.errors.push(`${e.name}: ${e.message}`);
+      watchedState.errors.push(`${error.name}: ${error.message}`);
     });
-  })
+  });
 
   render(state);
 };
