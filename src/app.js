@@ -1,17 +1,29 @@
-import onChange from 'on-change';
+import i18next from 'i18next';
 import validate from './scripts/validator';
-import render from './view/view';
+import ru from './locales/ru';
+import initWatchedState from './view/view';
 
 export default () => {
+  const i18nextInstance = i18next.createInstance();
+  i18nextInstance.init({
+    lng: 'ru',
+    resources: {
+      ru,
+    },
+  });
+
   const state = {
+    lang: null,
     form: {
       status: 'filling',
+      result: null,
     },
     data: '',
     errors: [],
   };
 
-  const watchedState = onChange(state, render);
+  const watchedState = initWatchedState(i18nextInstance, state);
+  watchedState.lang = i18nextInstance.language;
 
   const form = document.querySelector('form');
 
@@ -24,9 +36,8 @@ export default () => {
       watchedState.data = link;
     }).catch((error) => {
       watchedState.form.status = 'invalid';
-      watchedState.errors.push(`${error.name}: ${error.message}`);
+      watchedState.form.result = error;
+      // watchedState.errors.push(`${error.name}: ${error.message}`);
     });
   });
-
-  render(state);
 };

@@ -26,6 +26,7 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "clean-webpack-plugin": "^4.0.0",
+    "i18next": "^23.10.0",
     "lodash": "^4.17.21",
     "on-change": "^5.0.1",
     "path": "^0.12.7",
