@@ -1,15 +1,23 @@
 import onChange from 'on-change';
 import renderTitle from './renderTitle';
 import renderForm from './renderForm';
-import renderErrors from './renderErrors';
+import renderFeedback from './renderFeedback';
+import renderFeeds from './renderFeeds';
+import renderPosts from './renderPosts';
 
 const initWatchedState = (i18nextInstance, state) => onChange(state, (path, value) => {
   switch (path) {
-    case 'form.status':
+    case 'form.state':
       renderForm(state, i18nextInstance);
       break;
     case 'form.result':
-      renderErrors(value, i18nextInstance);
+      renderFeedback(value, i18nextInstance);
+      break;
+    case 'data.feeds':
+      renderFeeds(value);
+      break;
+    case 'data.posts':
+      renderPosts(value);
       break;
     case 'lang':
       renderTitle(state, i18nextInstance);

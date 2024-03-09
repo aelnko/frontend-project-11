@@ -5,9 +5,12 @@ export default {
     form: {
       label: 'Ссылка RSS',
       add: 'Добавить',
-      example: 'Пример: https://ru.hexlet.io/lessons.rss',
+      example: 'Пример: https://lorem-rss.hexlet.app/feed',
+      success: 'RSS успешно загружен',
       errors: {
         notValidUrl: 'ссылка должна быть валидным URL',
+        notValidRss: 'ресурс не содержит валидный RSS',
+        network: 'Ошибка сети',
       },
     },
   },
