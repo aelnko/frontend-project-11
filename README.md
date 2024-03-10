@@ -9,3 +9,4 @@ https://frontend-project-11-6ro6d2922-aelnkos-projects.vercel.app/
 https://feeds.simplecast.com/54nAGcIl
 https://lorem-rss.hexlet.app/feed
 https://feeds.simplecast.com/qm_9xx0g
+https://lorem-rss.hexlet.app/feed?unit=second

@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import ru from './locales/ru';
 import initWatchedState from './view/view';
 import submitHandler from './scripts/submitHandler';
+import updatePosts from './scripts/updatePosts';
 
 export default () => {
   const i18nextInstance = i18next.createInstance();
