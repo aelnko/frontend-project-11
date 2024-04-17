@@ -12,8 +12,9 @@ export default (title, url, description) => {
 
   const closeModalHandler = () => {
     modal.classList.remove('show');
-    closeModalIcon.removeEventListener('click', closeModalHandler);
   };
+
+  closeModalIcon.removeEventListener('click', closeModalHandler);
 
   closeModalIcon.addEventListener('click', closeModalHandler);
 };
