@@ -1,6 +1,7 @@
 import renderModal from './renderModal';
 
-export default (result, state) => {
+
+export default (result, state, i18nextInstance) => {
   const blockTitle = document.querySelector('.posts-title');
   blockTitle.textContent = 'Посты';
   const list = document.querySelector('.posts ul');
@@ -31,7 +32,7 @@ export default (result, state) => {
       'btn-sm',
       'open-modal',
     );
-    button.textContent = 'Просмотр';
+    button.textContent = i18nextInstance.t('form.view');
     button.setAttribute('data-title', postTitle);
     button.setAttribute('data-url', postURL);
     button.setAttribute('id', postId);

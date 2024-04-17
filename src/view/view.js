@@ -18,13 +18,13 @@ const initWatchedState = (i18nextInstance, state) => onChange(state, (path, valu
       renderFeeds(value);
       break;
     case 'data.posts':
-      renderPosts(value, state);
+      renderPosts(value, state, i18nextInstance);
       break;
     case 'uiState.openedModal':
       renderModal(value, state);
       break;
     case 'uiState.read':
-      renderPosts(state.data.posts, state);
+      renderPosts(state.data.posts, state, i18nextInstance);
       break;
     case 'lang':
       renderTitle(state, i18nextInstance);
