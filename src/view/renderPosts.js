@@ -1,6 +1,5 @@
 import renderModal from './renderModal';
 
-
 export default (result, state, i18nextInstance) => {
   const blockTitle = document.querySelector('.posts-title');
   blockTitle.textContent = 'Посты';
