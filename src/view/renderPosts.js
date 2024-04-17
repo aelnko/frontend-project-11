@@ -7,7 +7,6 @@ export default (result, state, i18nextInstance) => {
   const posts = result.map(({
     postTitle, postURL, postId, description,
   }) => {
-    const readIds = state.uiState.read.map((post) => post.postId);
     const li = document.createElement('li');
     li.classList.add(
       'list-group-item',
@@ -22,7 +21,7 @@ export default (result, state, i18nextInstance) => {
     const title = document.createElement('a');
     title.textContent = postTitle;
     title.setAttribute('href', postURL);
-    title.classList.add(readIds.includes(postId) ? 'fw-normal' : 'fw-bold');
+    title.classList.add(state.uiState.read.includes(postId) ? 'fw-normal' : 'fw-bold');
 
     const button = document.createElement('button');
     button.classList.add(

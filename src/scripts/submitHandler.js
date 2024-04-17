@@ -35,9 +35,7 @@ export default (watchedState, input) => (event) => {
       const viewButtons = document.querySelectorAll('.open-modal');
       viewButtons.forEach((button) => button.addEventListener('click', () => {
         watchedState.data.posts.find(({ postId }) => postId === button.id).touched = true;
-        watchedState.uiState.read.push(
-          watchedState.data.posts.find(({ postId }) => postId === button.id),
-        );
+        watchedState.uiState.read.push(button.id);
       }));
     })
     .then(() => setTimeout(updatePosts, 5000, url, watchedState))

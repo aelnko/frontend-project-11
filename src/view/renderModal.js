@@ -9,11 +9,11 @@ export default (title, url, description) => {
   linkButton.href = url;
 
   const closeModalIcon = document.querySelector('.close');
-  closeModalIcon.addEventListener('click', () => {
+
+  const closeModalHandler = () => {
     modal.classList.remove('show');
-  });
-  const closeButton = document.querySelector('.close-modal');
-  closeButton.addEventListener('click', () => {
-    modal.classList.remove('show');
-  });
+    closeModalIcon.removeEventListener('click', closeModalHandler);
+  };
+
+  closeModalIcon.addEventListener('click', closeModalHandler);
 };
