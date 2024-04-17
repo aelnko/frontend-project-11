@@ -8,8 +8,12 @@ export default (title, url, description) => {
   modalBody.textContent = description;
   linkButton.href = url;
 
-  const closeModal = modal.querySelector('.close');
-  closeModal.addEventListener('click', () => {
+  const closeModalIcon = document.querySelector('.close');
+  closeModalIcon.addEventListener('click', () => {
+    modal.classList.remove('show');
+  });
+  const closeButton = document.querySelector('.close-modal');
+  closeButton.addEventListener('click', () => {
     modal.classList.remove('show');
   });
 };

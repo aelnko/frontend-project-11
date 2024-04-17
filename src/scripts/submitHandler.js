@@ -34,6 +34,7 @@ export default (watchedState, input) => (event) => {
       ];
       const viewButtons = document.querySelectorAll('.open-modal');
       viewButtons.forEach((button) => button.addEventListener('click', () => {
+        console.log(button.id);
         watchedState.data.posts.find(({ postId }) => postId === button.id).touched = true;
         watchedState.uiState.read.push(
           watchedState.data.posts.find(({ postId }) => postId === button.id),

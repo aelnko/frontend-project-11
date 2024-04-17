@@ -8,6 +8,7 @@ export default (result, state, i18nextInstance) => {
     postTitle, postURL, postId, description,
   }) => {
     const readIds = state.uiState.read.map((post) => post.postId);
+    console.log(readIds);
     const li = document.createElement('li');
     li.classList.add(
       'list-group-item',
