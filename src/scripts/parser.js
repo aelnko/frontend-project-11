@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 
-import { uniqueId } from "lodash";
+import { uniqueId } from 'lodash';
 
 const getPosts = (doc) => {
   const items = doc.querySelectorAll('item');
@@ -17,7 +17,7 @@ const getPosts = (doc) => {
   });
 };
 
-const parseFeed = ({ contents }) => {
+const parseFeed = ({ contents }, url) => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(contents, 'application/xml');
   const title = doc.querySelector('title').textContent;
@@ -25,13 +25,13 @@ const parseFeed = ({ contents }) => {
   const posts = getPosts(doc);
   const pubDate = new Date(doc.querySelector('pubDate').textContent).getTime();
   return {
-    title, description, posts, pubDate,
+    title, description, posts, pubDate, url,
   };
 };
 
-export default (data) => {
+export default (data, url) => {
   try {
-    return parseFeed(data);
+    return parseFeed(data, url);
   } catch (e) {
     throw new Error('notValidRss');
   }

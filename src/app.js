@@ -32,8 +32,7 @@ export default () => {
   watchedState.lang = i18nextInstance.language;
 
   const form = document.querySelector('form');
+  const input = document.querySelector('input');
 
-  form.addEventListener('submit', submitHandler(watchedState));
-
-
+  form.addEventListener('submit', submitHandler(watchedState, input));
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import getData from './getData';
 import parse from './parser';
 

@@ -1,11 +1,12 @@
-import renderModal from "./renderModal";
+import renderModal from './renderModal';
 
 export default (result, state) => {
   const blockTitle = document.querySelector('.posts-title');
-  console.log(state);
   blockTitle.textContent = 'Посты';
   const list = document.querySelector('.posts ul');
-  const posts = result.map(({ postTitle, postURL, postId, description }) => {
+  const posts = result.map(({
+    postTitle, postURL, postId, description,
+  }) => {
     const readIds = state.uiState.read.map((post) => post.postId);
     const li = document.createElement('li');
     li.classList.add(

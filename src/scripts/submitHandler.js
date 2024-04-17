@@ -5,15 +5,23 @@ import getData from './getData';
 import parse from './parser';
 import updatePosts from './updatePosts';
 
-export default (watchedState) => (event) => {
+export default (watchedState, input) => (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const url = formData.get('url');
-  validate(url)
-    .then((link) => link)
-    .then((link) => getData(link))
-    .then((data) => parse(data))
+  const url = formData.get('url').trim();
+  let link;
+  watchedState.form.state = 'loading';
+  watchedState.form.result = 'loading';
+  validate(url, watchedState.data.feeds)
+    .then((data) => {
+      link = data;
+      return link;
+    })
+    .then((data) => getData(data))
+    .then((data) => parse(data, link))
     .then(({ title, description, posts }) => {
+      watchedState.form.state = 'success';
+      watchedState.form.result = 'success';
       const id = uniqueId();
       watchedState.data.feeds.push({
         url,
@@ -34,7 +42,9 @@ export default (watchedState) => (event) => {
     })
     .then(() => setTimeout(updatePosts, 5000, url, watchedState))
     .catch((error) => {
-      watchedState.form.status = 'invalid';
+      watchedState.form.state = 'invalid';
       watchedState.form.result = error;
     });
+  input.value = '';
+  input.focus();
 };

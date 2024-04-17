@@ -6,7 +6,7 @@ export default (feedback, i18nextInstance) => {
     feedbackElement.classList.add('text-danger');
     feedbackElement.classList.remove('text-success');
     input.classList.add('is-invalid');
-  } else {
+  } else if (feedback === 'success') {
     feedbackElement.textContent = i18nextInstance.t('form.success');
     input.classList.remove('is-invalid');
     feedbackElement.classList.add('text-success');

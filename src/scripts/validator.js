@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export default (data) => {
+export default (data, feeds) => {
   yup.setLocale({
     mixed: {
       default: 'field_invalid',
@@ -10,6 +10,6 @@ export default (data) => {
     },
   });
 
-  const schema = yup.string().required().url();
+  const schema = yup.string().required('empty').url('notValidUrl').notOneOf(feeds.map(({ url }) => url), 'duplicate');
   return schema.validate(data);
 };

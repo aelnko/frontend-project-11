@@ -11,6 +11,8 @@ export default {
         notValidUrl: 'ссылка должна быть валидным URL',
         notValidRss: 'ресурс не содержит валидный RSS',
         network: 'Ошибка сети',
+        duplicate: 'RSS уже существует',
+        empty: 'Поле не может быть пустым',
       },
     },
   },
