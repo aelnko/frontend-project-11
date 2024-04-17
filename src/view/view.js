@@ -4,6 +4,7 @@ import renderForm from './renderForm';
 import renderFeedback from './renderFeedback';
 import renderFeeds from './renderFeeds';
 import renderPosts from './renderPosts';
+import renderModal from './renderModal';
 
 const initWatchedState = (i18nextInstance, state) => onChange(state, (path, value) => {
   switch (path) {
@@ -17,7 +18,13 @@ const initWatchedState = (i18nextInstance, state) => onChange(state, (path, valu
       renderFeeds(value);
       break;
     case 'data.posts':
-      renderPosts(value);
+      renderPosts(value, state);
+      break;
+    case 'uiState.openedModal':
+      renderModal(value, state);
+      break;
+    case 'uiState.read':
+      renderPosts(state.data.posts, state);
       break;
     case 'lang':
       renderTitle(state, i18nextInstance);

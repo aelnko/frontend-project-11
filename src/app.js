@@ -2,7 +2,6 @@ import i18next from 'i18next';
 import ru from './locales/ru';
 import initWatchedState from './view/view';
 import submitHandler from './scripts/submitHandler';
-import updatePosts from './scripts/updatePosts';
 
 export default () => {
   const i18nextInstance = i18next.createInstance();
@@ -24,6 +23,9 @@ export default () => {
       posts: [],
       feeds: [],
     },
+    uiState: {
+      read: [],
+    },
   };
 
   const watchedState = initWatchedState(i18nextInstance, state);
@@ -32,4 +34,6 @@ export default () => {
   const form = document.querySelector('form');
 
   form.addEventListener('submit', submitHandler(watchedState));
+
+
 };

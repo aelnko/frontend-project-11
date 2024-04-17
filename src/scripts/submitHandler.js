@@ -24,8 +24,15 @@ export default (watchedState) => (event) => {
       watchedState.data.posts = [
         ...posts.map((post) => ({ ...post, feedId: id })),
       ];
+      const viewButtons = document.querySelectorAll('.open-modal');
+      viewButtons.forEach((button) => button.addEventListener('click', () => {
+        watchedState.data.posts.find(({ postId }) => postId === button.id).touched = true;
+        watchedState.uiState.read.push(
+          watchedState.data.posts.find(({ postId }) => postId === button.id),
+        );
+      }));
     })
-    .then(() => updatePosts(url, watchedState))
+    .then(() => setTimeout(updatePosts, 5000, url, watchedState))
     .catch((error) => {
       watchedState.form.status = 'invalid';
       watchedState.form.result = error;

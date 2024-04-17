@@ -1,6 +1,6 @@
 export default (state, i18nextInstance) => {
   const label = document.querySelector('label');
-  const submitBtn = document.querySelector('button');
+  const submitBtn = document.querySelector('.submit');
   const example = document.querySelector('.example');
 
   // if (state.form.status === 'invalid') {
